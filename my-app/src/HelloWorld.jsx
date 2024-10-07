@@ -1,10 +1,7 @@
-function Hello() {
-    return <h2>Hello, World!</h2>;
-}
-
-export function App() {
-    <div>
-        <Hello />
-    </div>
-
+export default function Hello() {
+    return (
+        <div>
+            <h2>Hello, World!</h2>
+        </div>
+    );
 }
