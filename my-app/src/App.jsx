@@ -1,12 +1,15 @@
-import Hello from "./HelloWorld"
-import Welcome from "./Welcome";
+import Hello from "./components/HelloWorld/HelloWorld"
+import Welcome from "./components/Welcome/Welcome"
 
 
-export default function App() {
+
+
+const App = () => {
     return (
         <div>
             <Hello />
-            <Welcome name={"Giancosimo"} age={33} />
+            <Welcome name={"John"} age={20} />
         </div>
     )
 }
+export default App
