@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState } from "react"
+
 
 const Counter = () => {
     const [count, setCount] = useState(0)
@@ -12,7 +13,7 @@ const Counter = () => {
     }
 
     const resetCounter = () => {
-        setCount((count) => count = 0)
+        setCount(0)
     }
 
     return (
