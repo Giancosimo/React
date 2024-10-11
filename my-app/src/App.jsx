@@ -4,16 +4,18 @@ import Alert from "./components/Alert/Alert";
 import State from "./components/State/State";
 import UseEffect from "./components/useEffect/useEffect";
 import Clock from "./components/useEffect/Clock";
+import Handling from "./components/Handling/Handling";
 
 const App = () => {
     return (
         <div>
-            {/* <Hello />
+            <Hello />
             <Welcome name={"John"} age={20} />
             <Alert />
-            <State /> */}
+            <State />
             <UseEffect />
             <Clock />
+            <Handling />
         </div>
     )
 }
