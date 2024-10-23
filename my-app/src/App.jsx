@@ -10,6 +10,7 @@ import ControlledForms from "./components/ControlledForms/ControlledForms"
 import UncontrolledForms from "./components/UncontrolledForms/UncontrolledForms"
 import FocusableInput from "./components/Refs/FocusableInput";
 import MountEffectComponent from "./components/Refs/MountEffectComponent";
+import TodoList from './TodoList';
 
 import Colors from './Colors';
 
@@ -31,6 +32,7 @@ const App = () => {
                 <UncontrolledForms />
                 <FocusableInput />
                 <MountEffectComponent />
+                <TodoList />
             </div>
             <div>
                 <h1>Color List</h1>
