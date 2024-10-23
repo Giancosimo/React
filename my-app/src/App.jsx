@@ -7,9 +7,13 @@ import Clock from "./components/useEffect/Clock";
 import Handling from "./components/Handling/Handling";
 import ControlledForms from "./components/ControlledForms/ControlledForms"
 import UncontrolledForms from "./components/UncontrolledForms/UncontrolledForms"
-import Refs from "./components/Refs/Refs";
+import FocusableInput from "./components/Refs/FocusableInput";
+import MountEffectComponent from "./components/Refs/MountEffectComponent";
 
 const App = () => {
+    const handleLogin = (data) => {
+         console.log(data); 
+     }
     return (
         <div>
             <Hello />
@@ -19,9 +23,10 @@ const App = () => {
             <UseEffect />
             <Clock />
             <Handling />
-            <ControlledForms />
+            <ControlledForms onLogin={handleLogin} />
             <UncontrolledForms />
-            <Refs />
+            <FocusableInput />
+            <MountEffectComponent />
         </div>
     )
 }

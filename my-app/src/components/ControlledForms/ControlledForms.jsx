@@ -1,46 +1,122 @@
-import { useState } from "react"
+import React, { useState } from 'react';
 
-const dataForm = () => {
-    return {
-        welcome: "",
-        username: "",
-        password: "",
-        session: false
-    }
+function Welcome({ name }) {
+    return <p>Welcome, {name}!</p>;
 }
 
-const InteractiveWelcome = () => {
-    const [data, setData] = useState(dataForm())
-    const welcome = ({ name }) => {
-       return <p>Welcome, {name}!</p>
-    }
+function InteractiveWelcome() {
+    const [name, setName] = useState('');
 
     const handleInputChange = (event) => {
-        const name = event.target.name
-        const value = event.target.value
-        const checked = event.target.checked
-        const type = event.target.type
-        setData((data) => {
-            const updated = { ...data, welcome, [name]: type === "checkbox" ? checked : value, }
-            return updated
-        })
-    }
+        setName(event.target.value);
+    };
 
-    const LoginForm = () => {
-        setData(dataForm())
-    }
-    const ResetForm = () => {
-        setData(dataForm())
-    }
     return (
         <div>
-            
-            <input name="username" value={data.username} onChange={handleInputChange} />
-            <input name="password" type="password" value={data.password} onChange={handleInputChange} />
-            <input name="session" type="checkbox" checked={data.session} onChange={handleInputChange} />
-            <button disabled={!data.username || !data.password} onClick={LoginForm}>Login</button>
-            <button onClick={ResetForm}>Reset</button>
+            <input
+                type="text"
+                value={name}
+                onChange={handleInputChange}
+                placeholder="Enter your name"
+            />
+            <Welcome name={name} />
         </div>
-    )
+    );
 }
-export default InteractiveWelcome
+function Welcome({ name }) {
+    return <p>Welcome, {name}!</p>;
+}
+
+// InteractiveWelcome component
+function InteractiveWelcome() {
+    const [name, setName] = useState('');
+
+    // Event handler to update the input value
+    const handleInputChange = (event) => {
+        setName(event.target.value);
+    };
+
+    return (
+        <div>
+            <input
+                type="text"
+                value={name}
+                onChange={handleInputChange}
+                placeholder="Enter your name"
+            />
+            <Welcome name={name} />
+        </div>
+    );
+}
+
+function Login({ onLogin }) {
+
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [remember, setRemember] = useState(false);
+
+
+    const handleUsernameChange = (event) => setUsername(event.target.value);
+    const handlePasswordChange = (event) => setPassword(event.target.value);
+    const handleRememberChange = (event) => setRemember(event.target.checked);
+
+
+    const handleLogin = (event) => {
+        event.preventDefault();
+        onLogin({ username, password, remember });
+    };
+
+
+    const handleReset = () => {
+        setUsername('');
+        setPassword('');
+        setRemember(false);
+    };
+
+
+    const isLoginDisabled = !username || !password;
+
+    return (
+        <form onSubmit={handleLogin}>
+            <div>
+                <label>
+                    Username:
+                    <input
+                        type="text"
+                        value={username}
+                        onChange={handleUsernameChange}
+                        placeholder="Enter your username"
+                    />
+                </label>
+            </div>
+            <div>
+                <label>
+                    Password:
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={handlePasswordChange}
+                        placeholder="Enter your password"
+                    />
+                </label>
+            </div>
+            <div>
+                <label>
+                    Remember me:
+                    <input
+                        type="checkbox"
+                        checked={remember}
+                        onChange={handleRememberChange}
+                    />
+                </label>
+            </div>
+            <div>
+                <button type="submit" disabled={isLoginDisabled}>Login</button>
+                <button type="button" onClick={handleReset}>Reset</button>
+            </div>
+        </form>
+    );
+}
+
+export default Login;
+export default InteractiveWelcome;
